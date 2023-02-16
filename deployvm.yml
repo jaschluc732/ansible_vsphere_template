@@ -47,7 +47,7 @@
     delegate_to: localhost
     register: deploy
 
-    tasks:
+  tasks:
   - name: Create VM for vm-vrf3
     vmware_guest:
       hostname: vca70.eveng.dev
@@ -90,7 +90,7 @@
     delegate_to: localhost
     register: deploy
 
-    tasks:
+  tasks:
   - name: Create VM for vm-vrf4
     vmware_guest:
       hostname: vca70.eveng.dev
@@ -133,7 +133,7 @@
     delegate_to: localhost
     register: deploy
 
-    tasks:
+  tasks:
   - name: Create VM for vm-vrf5
     vmware_guest:
       hostname: vca70.eveng.dev
@@ -176,7 +176,7 @@
     delegate_to: localhost
     register: deploy
 
-    tasks:
+  tasks:
   - name: Create VM for vm-vrf6
     vmware_guest:
       hostname: vca70.eveng.dev
@@ -219,7 +219,7 @@
     delegate_to: localhost
     register: deploy
 
-    tasks:
+  tasks:
   - name: Create VM for vm-vrf7
     vmware_guest:
       hostname: vca70.eveng.dev
@@ -262,7 +262,7 @@
     delegate_to: localhost
     register: deploy
 
-    tasks:
+  tasks:
   - name: Create VM for vm-vrf8
     vmware_guest:
       hostname: vca70.eveng.dev
@@ -305,7 +305,7 @@
     delegate_to: localhost
     register: deploy
 
-    tasks:
+  tasks:
   - name: Create VM for vm-vrf9
     vmware_guest:
       hostname: vca70.eveng.dev
@@ -348,7 +348,7 @@
     delegate_to: localhost
     register: deploy
 
-    tasks:
+  tasks:
   - name: Create VM for vm-vrf10
     vmware_guest:
       hostname: vca70.eveng.dev
