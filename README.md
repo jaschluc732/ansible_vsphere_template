@@ -1,0 +1,1 @@
+# ansible_vsphere_template
