@@ -5,6 +5,20 @@
   gather_facts: no
 
   tasks:
+  - name: Remove power for vm-vrf9
+    vmware_guest:
+      hostname: vca70.eveng.dev
+      username: administrator@vsphere.local
+      password: Admin!2345
+      validate_certs: False
+      datacenter: NSX-T
+      folder: VRF-VMs
+      name: vm-vrf9
+      state: poweredoff
+    delegate_to: localhost
+    register: facts
+
+
   - name: Remove VM for vm-vrf9
     vmware_guest:
       hostname: vca70.eveng.dev
