@@ -5,7 +5,7 @@
   gather_facts: no
 
   tasks:
-  - name: Remove VM for vm-vrf3
+  - name: Remove VM for vm-vrf9
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
@@ -13,7 +13,7 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: vm-vrf3
+      name: vm-vrf9
       state: absent
     delegate_to: localhost
     register: facts
