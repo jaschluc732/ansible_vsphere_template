@@ -5,33 +5,8 @@
   gather_facts: no
 
   tasks:
-  - name: Remove power for vm-vrf1
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf1
-      state: poweredoff
-    delegate_to: localhost
-    register: facts
- 
-  - name: Remove VM for vm-vrf1
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf1
-      state: absent
-    delegate_to: localhost
-    register: facts
 
-  - name: Remove power for vm-vrf10
+  - name: Remove power for vm-vrf2
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
@@ -39,12 +14,12 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: vm-vrf10
+      name: vm-vrf2
       state: poweredoff
     delegate_to: localhost
     register: facts
 
-  - name: Remove VM for vm-vrf10
+  - name: Remove VM for vm-vrf2
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
@@ -52,33 +27,7 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: vm-vrf10
-      state: absent
-    delegate_to: localhost
-    register: facts
-
-  - name: Remove power for vm-vrf12
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf12
-      state: poweredoff
-    delegate_to: localhost
-    register: facts
-
-  - name: Remove VM for vm-vrf12
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf12
+      name: vm-vrf2
       state: absent
     delegate_to: localhost
     register: facts
