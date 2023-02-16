@@ -13,7 +13,7 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: vm-vrf1
+      name: vm-vrf2
       state: poweredon
       template: Ubuntu-2204-Template-100GB-Thin
       esxi_hostname: 192.168.1.5
