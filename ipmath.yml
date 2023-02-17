@@ -6,6 +6,6 @@
 
   tasks:
     - set_fact:
-        next_ip: "10.10.10.10|ansible.netcommon.ipmath(5)"
+        next_ip: "{{ start_ip|ipmath(1) }}"
     - debug:
         msg: "Next ip of {{ start_ip }} is: {{ next_ip }}"
