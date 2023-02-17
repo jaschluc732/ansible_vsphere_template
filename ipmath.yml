@@ -1,11 +1,11 @@
----
-- name: Increase IP address by 1 with ipmath
-  hosts: localhost
+- hosts: localhost
+  gather_facts: false
+  connection: local
   vars:
-    num_ips: "5"
-    starting_ip: "192.168.1.1"
+    start_ip: 10.10.10.10
+
   tasks:
-    - name: Generate list of IPs using ipmath
-      debug:
-        msg: "{{ (starting_ip | ipmath('+(num_ips)')) }}"
-      with_sequence: start=0 end={{ num_ips - 1 }}
+    - set_fact:
+        next_ip: "10.10.10.10|ansible.netcommon.ipmath(5)"
+    - debug:
+        msg: "Next ip of {{ start_ip }} is: {{ next_ip }}"
