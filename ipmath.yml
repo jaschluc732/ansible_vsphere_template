@@ -7,5 +7,5 @@
   tasks:
     - name: Generate list of IPs using ipmath
       debug:
-        msg: "{{ (starting_ip | ipmath('+(item)')) }}"
-      with_sequence: start=0 end={{ num_ips + (item) }}
+        msg: "{{ (starting_ip | ipmath('+(num_ips)')) }}"
+      with_sequence: start=0 end={{ num_ips - 1 }}
