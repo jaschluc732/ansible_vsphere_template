@@ -8,4 +8,4 @@
     - name: Generate list of IPs using ipmath
       debug:
         msg: "{{ starting_ip|ipmath(1) }}"
-      with_sequence: start=0 end={{ num_ips - 1 }}
+      with_sequence: start=0 end={{ num_ips + 1 }}
