@@ -9,3 +9,5 @@
         next_ip: "{{ start_ip|ipmath(1) }}"
     - debug:
         msg: "Next ip of {{ start_ip }} is: {{ next_ip }}"
+    - debug:
+        msg: "And next ip is {{ next_ip }} + {{next_ip }}"
