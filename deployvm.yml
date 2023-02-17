@@ -3,7 +3,9 @@
   hosts: localhost
   connection: local
   gather_facts: no
-
+  vars:
+   - num_vms: 3
+     starting_ip: 110
   tasks:
   - name: Create VM for vm-vrf3
     vmware_guest:
@@ -13,7 +15,6 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: vm-vrf3
       state: poweredon
       template: Ubuntu-2204-Template-100GB-Thin
       esxi_hostname: pcs-esxi1.eveng.dev
@@ -38,269 +39,15 @@
         boot_firmware: "efi"
       networks:
       - name: DPortGroup
-        ip: 192.168.1.107
+      customization:
+       hostname: "vm-vrf-{{ item }}"
+       dns_servers: 
+        - 192.168.1.3
+       ip_settings:
+        ip: "192.168.1.{{ starting_ip + item }}"
         netmask: 255.255.255.0
         gateway: 192.168.1.1
-        dns_servers:
-        - 192.168.1.3
       wait_for_ip_address: no
     delegate_to: localhost
     register: deploy
-
-  tasks:
-  - name: Create VM for vm-vrf4
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf4
-      state: poweredon
-      template: Ubuntu-2204-Template-100GB-Thin
-      esxi_hostname: pcs-esxi1.eveng.dev
-      disk:
-      - size_gb: 100
-        type: thin
-        datastore: esxi1
-      hardware:
-        memory_mb: 4096
-        num_cpus: 2
-        num_cpu_cores_per_socket: 1
-        scsi: paravirtual
-        memory_reservation_lock: no
-        #mem_limit: 8096
-        mem_reservation: 0
-        #cpu_limit: 8096
-        cpu_reservation: 0
-        hotadd_cpu: True
-        hotremove_cpu: True
-        hotadd_memory: True
-        #version: 19 # Hardware version of virtual machine
-        boot_firmware: "efi"
-      networks:
-      - name: DPortGroup
-        ip: 192.168.1.108
-        netmask: 255.255.255.0
-        gateway: 192.168.1.1
-        dns_servers:
-        - 192.168.1.3
-      wait_for_ip_address: no
-    delegate_to: localhost
-    register: deploy
-
-  tasks:
-  - name: Create VM for vm-vrf5
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf5
-      state: poweredon
-      template: Ubuntu-2204-Template-100GB-Thin
-      esxi_hostname: pcs-esxi1.eveng.dev
-      disk:
-      - size_gb: 100
-        type: thin
-        datastore: esxi1
-      hardware:
-        memory_mb: 4096
-        num_cpus: 2
-        num_cpu_cores_per_socket: 1
-        scsi: paravirtual
-        memory_reservation_lock: no
-        #mem_limit: 8096
-        mem_reservation: 0
-        #cpu_limit: 8096
-        cpu_reservation: 0
-        hotadd_cpu: True
-        hotremove_cpu: True
-        hotadd_memory: True
-        #version: 19 # Hardware version of virtual machine
-        boot_firmware: "efi"
-      networks:
-      - name: DPortGroup
-        ip: 192.168.1.109
-        netmask: 255.255.255.0
-        gateway: 192.168.1.1
-        dns_servers:
-        - 192.168.1.3
-      wait_for_ip_address: no
-    delegate_to: localhost
-    register: deploy
-
-  tasks:
-  - name: Create VM for vm-vrf6
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf6
-      state: poweredon
-      template: Ubuntu-2204-Template-100GB-Thin
-      esxi_hostname: pcs-esxi1.eveng.dev
-      disk:
-      - size_gb: 100
-        type: thin
-        datastore: esxi1
-      hardware:
-        memory_mb: 4096
-        num_cpus: 2
-        num_cpu_cores_per_socket: 1
-        scsi: paravirtual
-        memory_reservation_lock: no
-        #mem_limit: 8096
-        mem_reservation: 0
-        #cpu_limit: 8096
-        cpu_reservation: 0
-        hotadd_cpu: True
-        hotremove_cpu: True
-        hotadd_memory: True
-        #version: 19 # Hardware version of virtual machine
-        boot_firmware: "efi"
-      networks:
-      - name: DPortGroup
-        ip: 192.168.1.110
-        netmask: 255.255.255.0
-        gateway: 192.168.1.1
-        dns_servers:
-        - 192.168.1.3
-      wait_for_ip_address: no
-    delegate_to: localhost
-    register: deploy
-
-  tasks:
-  - name: Create VM for vm-vrf7
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf7
-      state: poweredon
-      template: Ubuntu-2204-Template-100GB-Thin
-      esxi_hostname: pcs-esxi1.eveng.dev
-      disk:
-      - size_gb: 100
-        type: thin
-        datastore: esxi1
-      hardware:
-        memory_mb: 4096
-        num_cpus: 2
-        num_cpu_cores_per_socket: 1
-        scsi: paravirtual
-        memory_reservation_lock: no
-        #mem_limit: 8096
-        mem_reservation: 0
-        #cpu_limit: 8096
-        cpu_reservation: 0
-        hotadd_cpu: True
-        hotremove_cpu: True
-        hotadd_memory: True
-        #version: 19 # Hardware version of virtual machine
-        boot_firmware: "efi"
-      networks:
-      - name: DPortGroup
-        ip: 192.168.1.111
-        netmask: 255.255.255.0
-        gateway: 192.168.1.1
-        dns_servers:
-        - 192.168.1.3
-      wait_for_ip_address: no
-    delegate_to: localhost
-    register: deploy
-
-  tasks:
-  - name: Create VM for vm-vrf8
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf8
-      state: poweredon
-      template: Ubuntu-2204-Template-100GB-Thin
-      esxi_hostname: pcs-esxi1.eveng.dev
-      disk:
-      - size_gb: 100
-        type: thin
-        datastore: esxi1
-      hardware:
-        memory_mb: 4096
-        num_cpus: 2
-        num_cpu_cores_per_socket: 1
-        scsi: paravirtual
-        memory_reservation_lock: no
-        #mem_limit: 8096
-        mem_reservation: 0
-        #cpu_limit: 8096
-        cpu_reservation: 0
-        hotadd_cpu: True
-        hotremove_cpu: True
-        hotadd_memory: True
-        #version: 19 # Hardware version of virtual machine
-        boot_firmware: "efi"
-      networks:
-      - name: DPortGroup
-        ip: 192.168.1.112
-        netmask: 255.255.255.0
-        gateway: 192.168.1.1
-        dns_servers:
-        - 192.168.1.3
-      wait_for_ip_address: no
-    delegate_to: localhost
-    register: deploy
-
-  tasks:
-  - name: Create VM for vm-vrf9
-    vmware_guest:
-      hostname: vca70.eveng.dev
-      username: administrator@vsphere.local
-      password: Admin!2345
-      validate_certs: False
-      datacenter: NSX-T
-      folder: VRF-VMs
-      name: vm-vrf9
-      state: poweredon
-      template: Ubuntu-2204-Template-100GB-Thin
-      esxi_hostname: pcs-esxi1.eveng.dev
-      disk:
-      - size_gb: 100
-        type: thin
-        datastore: esxi1
-      hardware:
-        memory_mb: 4096
-        num_cpus: 2
-        num_cpu_cores_per_socket: 1
-        scsi: paravirtual
-        memory_reservation_lock: no
-        #mem_limit: 8096
-        mem_reservation: 0
-        #cpu_limit: 8096
-        cpu_reservation: 0
-        hotadd_cpu: True
-        hotremove_cpu: True
-        hotadd_memory: True
-        #version: 19 # Hardware version of virtual machine
-        boot_firmware: "efi"
-      networks:
-      - name: DPortGroup
-        ip: 192.168.1.113
-        netmask: 255.255.255.0
-        gateway: 192.168.1.1
-        dns_servers:
-        - 192.168.1.3
-      wait_for_ip_address: no
-    delegate_to: localhost
-    register: deploy
+    with_sequence: start=1 end={{ num_vms }}
