@@ -9,6 +9,8 @@
     - name: Generate list of IP addresses
       set_fact:
         ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
-    - name: Print list
+    - name: Print out all items in the list
       debug:
-        var: ip_list
+        msg: "{{ item }}"
+      loop: "{{ ip_list }}"
+
