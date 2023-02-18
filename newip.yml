@@ -8,9 +8,8 @@
   tasks:
     - name: Generate list of IP addresses
       set_fact:
-        ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
+        ip_list: newIP = "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
     - name: Print out all items in the list
       debug:
-        msg: "{{ item }}"
-      loop: "{{ ip_list }}"
+        var: newIP
 
