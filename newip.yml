@@ -1,11 +1,14 @@
 ---
+   
 - name: Increase IP address by 1 with ipmath
   hosts: all
   vars:
     starting_ip: "192.168.1.1"
-    num_ips: 5
+    num_vms: 5
+    vm_name_prefix: "vm"
   tasks:
-    - name: Generate list of IPs using ipmath
+    - name: Generate list of IP addresses
+      set_fact:
+        ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
       debug:
-        msg: "{{ (starting_ip | ipmath('+(item)')) }}"
-      with_sequence: start=0 end={{ num_ips - 1 }}
+        msg: new ip list {{ip_list }}
