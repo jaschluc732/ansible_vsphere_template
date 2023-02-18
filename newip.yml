@@ -12,4 +12,4 @@
         var: ip_list
     - name: Print out a list from a fact
       debug:
-      msg: "{{ ip_list }}"
+        msg: "{{ ip_list }}"
