@@ -1,3 +1,6 @@
+- name: Generate IP addresses
+  hosts: localhost
+  gather_facts: no
 - name: Increment IP address last octet
   hosts: localhost
   gather_facts: false
