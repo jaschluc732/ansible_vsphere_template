@@ -10,7 +10,4 @@
     - name: Print IP addresses
       debug:
         msg: "{{ base_ip_address }}{{ item }}"
-    - name: Name of VM
-      debug:
-        msg: "{{ vm_name_prefix }}{{ item }}"
       loop: "{{ range(start_index, end_index) }}"
