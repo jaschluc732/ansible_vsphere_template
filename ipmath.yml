@@ -10,3 +10,5 @@
       debug:
         msg: "{{ base_ip_address }}{{ item }}"
       loop: "{{ range(start_index, end_index) }}"
+    - name: ip settings
+      ip: "{{ base_ip_address }}{{ item }}"
