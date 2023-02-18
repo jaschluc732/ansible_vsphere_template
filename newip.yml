@@ -11,4 +11,4 @@
         ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
     - name: Print out a list from a fact
       debug:
-      msg: "{{ list }}"
+      msg: "{{ ip_list }}"
