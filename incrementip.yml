@@ -1,4 +1,6 @@
 ---
+  hosts: localhost
+  gather_facts: no
 - name: Deploy VMs with incrementing IP addresses
   hosts: hypervisor
   become: true
