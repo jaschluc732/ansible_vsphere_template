@@ -4,7 +4,7 @@
   connection: local
   gather_facts: no
   vars:
-    base_ip_addres: 192.168.1.110
+    base_ip_address: 192.168.1.110
     start_index: 111
     end_index: 113
   tasks:
