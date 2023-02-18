@@ -1,0 +1,25 @@
+---
+- name: Deploy VMs with incrementing IP addresses
+  hosts: hypervisor
+  become: true
+  vars:
+    starting_ip: "192.168.1.1"
+    num_vms: 5
+    vm_name_prefix: "vm"
+  tasks:
+    - name: Create VMs
+      virt:
+        name: "{{ vm_name_prefix }}{{ item }}"
+        state: running
+        virt_type: kvm
+        memory: 1024
+        vcpus: 1
+        disks:
+          - size: 10G
+            pool: default
+        interfaces:
+          - type: network
+            network: default
+            mac: "52:54:00:{{ '%02x'|format(item|int) }}:00:01"
+            address: "{{ (starting_ip | ipmath('+(item)')) }}/24"
+      loop: "{{ range(num_vms) | list }}"
