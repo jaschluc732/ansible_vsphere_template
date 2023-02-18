@@ -1,20 +1,13 @@
-- name: Generate IP addresses
+- name: Increment IP address last octet
   hosts: localhost
-  gather_facts: no
+  gather_facts: false
   vars:
-    lan: "192.168.1.1"
-    start_index: 1
-    end_index: 5
+    starting_ip: "192.168.1.1"
+    num_ips: 5
   tasks:
-    - name: Echo the passed IP
-      debug: var={{lan}}
-
-    - name: Extract the last octet, increment it and store it
-      set_fact: octet={{lan.split('.')[3] | int + 1 }}
-    - debug: var=octet
-
-    - name: Append the incremented octet to the first 3 octets
-      set_fact: new_ip="{{ lan | regex_replace('(^.*\.).*$', '\\1') }}{{octet}}"
-    - debug: var=new_ip
-      set_fact: new_ip=lan
-      loop: "{{ range(start_index, end_index) }}"
+    - name: Increment IP address
+      set_fact:
+        new_ip: "{{ starting_ip.split('.')[:-1] + [starting_ip.split('.')[-1] | int + loop.index] | join('.') }}"
+      loop: "{{ range(1, num_ips + 1) | list }}"
+      debug:
+        var: new_ip
