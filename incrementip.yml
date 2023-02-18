@@ -1,9 +1,8 @@
 ---
+  
+- name: Deploy VMs with incrementing IP addresses
   hosts: localhost
   gather_facts: no
-- name: Deploy VMs with incrementing IP addresses
-  hosts: hypervisor
-  become: true
   vars:
     starting_ip: "192.168.1.1"
     num_vms: 5
