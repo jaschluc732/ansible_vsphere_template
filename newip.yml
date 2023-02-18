@@ -3,6 +3,8 @@
   gather_facts: no
   vars:
     lan: "192.168.1.1"
+    start_index: 1
+    end_index: 5
   tasks:
     - name: Echo the passed IP
       debug: var={{lan}}
@@ -14,3 +16,4 @@
     - name: Append the incremented octet to the first 3 octets
       set_fact: new_ip="{{ lan | regex_replace('(^.*\.).*$', '\\1') }}{{octet}}"
     - debug: var=new_ip
+      loop: "{{ range(start_index, end_index) }}"
