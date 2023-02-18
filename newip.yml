@@ -1,0 +1,16 @@
+- name: Generate IP addresses
+  hosts: localhost
+  gather_facts: no
+  vars:
+    lan: "192.168.1.1"
+  tasks:
+    - name: Echo the passed IP
+      debug: var={{lan}}
+
+    - name: Extract the last octet, increment it and store it
+      set_fact: octet={{lan.split('.')[3] | int + 1 }}
+    - debug: var=octet
+
+    - name: Append the incremented octet to the first 3 octets
+      set_fact: new_ip="{{ lan | regex_replace('(^.*\.).*$', '\\1') }}{{octet}}"
+    - debug: var=new_ip
