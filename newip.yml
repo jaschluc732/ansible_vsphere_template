@@ -1,16 +1,13 @@
-- name: Generate IP addresses
-  hosts: localhost
-  gather_facts: no
 - name: Increment IP address last octet
   hosts: localhost
   gather_facts: false
   vars:
-    starting_ip: "192.168.1.1"
+    starting_ip: "10.10.10.1"
     num_ips: 5
   tasks:
     - name: Increment IP address
       set_fact:
-      new_ip: "{{ starting_ip.split('.')[:-1] + [starting_ip.split('.')[-1] | int + loop.index] | join('.') }}"
+        new_ip: "{{ starting_ip.split('.')[:-1] + [starting_ip.split('.')[-1] | int + loop.index] | join('.') }}"
       loop: "{{ range(1, num_ips + 1) | list }}"
       debug:
-      var: new_ip
+        var: new_ip
