@@ -5,8 +5,9 @@
   vars:
     starting_ip: "192.168.1.1"
     num_vms: 5
-    vm_name_prefix: "vm"
   tasks:
     - name: Generate list of IP addresses
       set_fact:
         ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
+      debug:
+        msg: ip_list

@@ -3,14 +3,10 @@
   gather_facts: no
   vars:
     base_ip_address: "192.168.1."
-    vm_name_prefix: "vm"
     start_index: 1
     end_index: 5
   tasks:
     - name: Print IP addresses
       debug:
         msg: "{{ base_ip_address }}{{ item }}"
-    - name: Test
-      debug:
-        msg: "{{ vm_name_prefix }}{{ item }}"
       loop: "{{ range(start_index, end_index) }}"
