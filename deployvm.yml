@@ -50,7 +50,7 @@
         ip: "{{ (base_ip_address | ipmath('+(item)')) }}"
         netmask: 255.255.255.0
         gateway: 192.168.1.1
-        loop: "{{ range(start_index, end_index) }}"  
+      loop: "{{ range(start_index, end_index) }}"  
       wait_for_ip_address: no
     delegate_to: localhost
     register: deploy
