@@ -8,7 +8,13 @@
     num_vms: 5
     vm_name_prefix: "vm"
   tasks:
+    - name: Generate list of IP addresses
+      set_fact:
+        ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
+      debug:
+        msg: "{{ starting_ip }}{{ item }}"  
     - name: Create VMs
+      vmware_guest:
       virt:
         name: "{{ vm_name_prefix }}{{ item }}"
         state: running
@@ -23,4 +29,6 @@
             network: default
             mac: "52:54:00:{{ '%02x'|format(item|int) }}:00:01"
             address: "{{ (starting_ip | ipmath('+(item)')) }}/24"
+        debug:
+          msg: "{{ starting_ip }}{{ item }}"     
       loop: "{{ range(num_vms) | list }}"

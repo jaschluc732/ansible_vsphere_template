@@ -5,8 +5,8 @@
   gather_facts: no
   vars:
     base_ip_address: "192.168.1."
-    start_index: 111
-    end_index: 113
+    start_index: 115
+    end_index: 117
   tasks:
   - name: Create VMs
     vmware_guest:
@@ -47,8 +47,8 @@
         ip: "{{ base_ip_address }}{{ item }}"
         netmask: 255.255.255.0
         gateway: 192.168.1.1
-        loop: "{{ range(start_index, end_index) }}"
       wait_for_ip_address: no
     delegate_to: localhost
     register: deploy
+    loop: "{{ range(start_index, end_index) }}"
     
