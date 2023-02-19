@@ -10,8 +10,8 @@
       set_fact:
         ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
         debug:
-        var: newIP
+          var: newIP
         debug:
-        msg: new ip is {{ newIP }}
+          msg: new ip is {{ newIP }}
       
 
