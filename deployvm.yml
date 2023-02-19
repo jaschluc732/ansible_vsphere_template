@@ -38,7 +38,8 @@
         hotremove_cpu: True
         hotadd_memory: True
         #version: 19 # Hardware version of virtual machine
-        boot_firmware: "efi"     
+        boot_firmware: "efi"
+    loop: "{{ range(start_index, end_index) }}"     
       networks:
       - name: DPortGroup
         hostname: "vm-vrf-{{ item }}"
@@ -46,8 +47,9 @@
         - 192.168.1.3
         ip: "{{ base_ip_address }}{{ item }}"
         netmask: 255.255.255.0
-        gateway: 192.168.1.1  
+        gateway: 192.168.1.1
+        loop: "{{ range(start_index, end_index) }}"
       wait_for_ip_address: no
     delegate_to: localhost
     register: deploy
-    loop: "{{ range(start_index, end_index) }}"
+    
