@@ -10,7 +10,8 @@
     - name: Print IP addresses
       debug:
         msg: "{{ base_ip_address }}{{ item }}"
+      loop: "{{ range(start_index, end_index) }}"
     - name: Print hostname 
       debug:
         msg: "{{ hostname }}{{ item }}"
-    loop: "{{ range(start_index, end_index) }}"
+      loop: "{{ range(start_index, end_index) }}"
