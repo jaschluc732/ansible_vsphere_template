@@ -38,8 +38,7 @@
         hotremove_cpu: True
         hotadd_memory: True
         #version: 19 # Hardware version of virtual machine
-        boot_firmware: "efi"
-    loop: "{{ range(start_index, end_index) }}"     
+        boot_firmware: "efi"     
       networks:
       - name: DPortGroup
         hostname: "vm-vrf-{{ item }}"
