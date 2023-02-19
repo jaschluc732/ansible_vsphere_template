@@ -1,5 +1,5 @@
 - name: Add several users
-  ansible.builtin.user:
+  hosts: localhost
     name: "{{ item.name }}"
     state: present
     groups: "{{ item.groups }}"
