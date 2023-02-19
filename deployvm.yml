@@ -46,10 +46,10 @@
        dns_servers: 
         - 192.168.1.3
        ip_settings:
-        ip: "{{ (base_ip_address | ipmath('+(item)')) }}"
+        ip: "{{ base_ip_address }}{{ item }}"
         netmask: 255.255.255.0
         gateway: 192.168.1.1  
       wait_for_ip_address: no
     delegate_to: localhost
     register: deploy
-    loop: "{{ range(start_index, end_index) }}" 
+    loop: "{{ range(start_index, end_index) }}"
