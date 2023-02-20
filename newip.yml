@@ -6,6 +6,7 @@
     - name: Increase IP address
       set_fact:
         ip_address: "{{ (ip_address.split('.')[:-1] + [ip_address.split('.')[-1]|int + loop.index]) | join('.') }}"
+      var: ip_address
       debug:
         msg: "{{ ip_address }}"
       loop: "{{ range(1, num_ips) | list }}"
