@@ -5,7 +5,11 @@
     ip_base: "10.0.0."    # the first three octets of the IP address
     starting_index: 1     # the starting index for the last octet of the IP address
     num_vms: 5            # the number of VMs to create
+    hostname: vm-vrf-
   tasks:
+    - name: Print vm name
+      debug:
+        msg: "{{ hostname }}{{ item }}"
     - name: Print IP addresses
       debug:
         msg: "{{ ip_base }}{{ starting_index + (item | int) }}"
