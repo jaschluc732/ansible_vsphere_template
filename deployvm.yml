@@ -17,7 +17,7 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: "{{ hostname }}{{ starting_index + (item | int) }}"
+      name: "{{ hostname }}{{ item }}"
       state: poweredon
       template: Ubuntu-2204-Template-100GB-Thin
       esxi_hostname: pcs-esxi1.eveng.dev
@@ -42,7 +42,7 @@
         boot_firmware: "efi"     
       networks:
       - name: DPortGroup
-        hostname: "{{ hostname }}{{ starting_index + (item | int) }}"
+        hostname: "{{ hostname }}{{ item }}"
         dns_servers: 
         - 192.168.1.3
         ip: "{{ ip_base }}{{ starting_index + (item | int) }}"
