@@ -32,7 +32,7 @@
     delegate_to: localhost
     register: facts
 
-    - name: Remove power for vm-vrf-111
+  - name: Remove power for vm-vrf-111
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
