@@ -14,7 +14,7 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: vm-vrf-111
+      name: vm-vrf-112
       state: poweredoff
     delegate_to: localhost
     register: facts
@@ -27,7 +27,7 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: vm-vrf-111
+      name: vm-vrf-112
       state: absent
     delegate_to: localhost
     register: facts
