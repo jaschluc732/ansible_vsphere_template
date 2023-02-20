@@ -9,5 +9,4 @@
     - name: Print IP addresses
       debug:
         msg: "{{ ip_base }}{{ starting_index + (item | int) }}"
-      loop: "{{ range(start_index, end_index) }}"
       with_sequence: start={{ starting_index }} count={{ num_vms }}
