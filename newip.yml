@@ -1,17 +1,11 @@
----
-   
-- name: Increase IP address by 1 with ipmath
-  hosts: localhost
+- hosts: localhost
   vars:
-    starting_ip: "192.168.1.1"
-    num_vms: 5
+    ip_address: "192.168.1.1"
+    num_ips: 5
   tasks:
-    - name: Generate list of IP addresses
+    - name: Increase IP address
       set_fact:
-        ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
-        debug:
-          var: newIP
-        debug:
-          msg: new ip is {{ newIP }}
-      
-
+        ip_address: "{{ (ip_address.split('.')[:-1] + [ip_address.split('.')[-1]|int + loop.index]) | join('.') }}"
+      debug:
+        msg: "{{ ip_address }}"
+      loop: "{{ range(1, num_ips) | list }}"
