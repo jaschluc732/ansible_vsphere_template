@@ -4,9 +4,10 @@
   connection: local
   gather_facts: no
   vars:
-    base_ip_address: "192.168.1."
-    start_index: 115
-    end_index: 117
+    ip_base: "192.168.1."
+    starting_index: 115
+    num_vms: 2
+    hostname: vm-vrf
   tasks:
   - name: Create VMs
     vmware_guest:
@@ -16,7 +17,7 @@
       validate_certs: False
       datacenter: NSX-T
       folder: VRF-VMs
-      name: "vm-vrf-{{ item }}"
+      name: "{{ hostname }}{{ starting_index + (item | int) }}"
       state: poweredon
       template: Ubuntu-2204-Template-100GB-Thin
       esxi_hostname: pcs-esxi1.eveng.dev
@@ -41,14 +42,14 @@
         boot_firmware: "efi"     
       networks:
       - name: DPortGroup
-        hostname: "vm-vrf-{{ item }}"
+        hostname: "{{ hostname }}{{ starting_index + (item | int) }}"
         dns_servers: 
         - 192.168.1.3
-        ip: "{{ base_ip_address }}{{ item }}"
+        ip: "{{ ip_base }}{{ starting_index + (item | int) }}"
         netmask: 255.255.255.0
         gateway: 192.168.1.1
       wait_for_ip_address: no
     delegate_to: localhost
     register: deploy
-    loop: "{{ range(start_index, end_index) }}"
+    with_sequence: start={{ starting_index }} count={{ num_vms }}
     
