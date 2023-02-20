@@ -10,6 +10,7 @@
     - name: Print vm name
       debug:
         msg: "{{ hostname }}{{ num_vms }}"
+      with_sequence: start={{ starting_index }} count={{ num_vms }}  
     - name: Print IP addresses
       debug:
         msg: "{{ ip_base }}{{ starting_index + (item | int) }}"
