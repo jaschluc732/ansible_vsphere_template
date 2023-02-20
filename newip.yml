@@ -1,12 +1,15 @@
 - hosts: localhost
   vars:
-    ip_address: "192.168.1.1"
+    lan: "192.168.1.1"
     num_ips: 5
   tasks:
-    - name: Increase IP address
-      set_fact:
-        ip_address: "{{ (ip_address.split('.')[:-1] + [ip_address.split('.')[-1]|int + loop.index]) | join('.') }}"
-    - name: Print IP address
-      debug:
-        var: ip_address
-      loop: "{{ range(1, num_ips) | list }}"
+  - name: Echo the passed IP
+    debug: var={{lan}}
+
+  - name: Extract the last octet, increment it and store it
+    set_fact: octet={{lan.split('.')[3] | int + 1 }}
+  - debug: var=octet
+
+  - name: Append the incremented octet to the first 3 octets
+    set_fact: new_ip="{{ lan | regex_replace('(^.*\.).*$', '\\1') }}{{octet}}"
+  - debug: var=new_ip
