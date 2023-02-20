@@ -2,16 +2,12 @@
   hosts: localhost
   gather_facts: no
   vars:
-    base_ip_address: "192.168.1."
-    hostname: "vm-vrf-"
-    start_index: 110
-    end_index: 120
+    ip_base: "10.0.0."    # the first three octets of the IP address
+    starting_index: 1     # the starting index for the last octet of the IP address
+    num_vms: 5            # the number of VMs to create
   tasks:
     - name: Print IP addresses
       debug:
-        msg: "{{ base_ip_address }}{{ item }}"
+        msg: "{{ ip_base }}{{ starting_index + (item | int) }}"
       loop: "{{ range(start_index, end_index) }}"
-    - name: Print hostname 
-      debug:
-        msg: "{{ hostname }}{{ item }}"
-      loop: "{{ range(start_index, end_index) }}"
+      with_sequence: start={{ starting_index }} count={{ num_vms }}

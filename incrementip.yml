@@ -1,34 +1,27 @@
----
-  
-- name: Deploy VMs with incrementing IP addresses
+- name: Create VMs with increasing IP address
   hosts: localhost
-  gather_facts: no
+  connection: local
   vars:
-    starting_ip: "192.168.1.1"
-    num_vms: 5
-    vm_name_prefix: "vm"
+    ip_base: "10.0.0."    # the first three octets of the IP address
+    starting_index: 1     # the starting index for the last octet of the IP address
+    num_vms: 5            # the number of VMs to create
   tasks:
-    - name: Generate list of IP addresses
-      set_fact:
-        ip_list: "{{ range(num_vms) | map('ipmath', starting_ip, '+(item)') | list }}"
-      debug:
-        msg: "{{ starting_ip }}{{ item }}"  
-    - name: Create VMs
+    - name: Create VM
       vmware_guest:
-      virt:
-        name: "{{ vm_name_prefix }}{{ item }}"
-        state: running
-        virt_type: kvm
-        memory: 1024
-        vcpus: 1
-        disks:
-          - size: 10G
-            pool: default
-        interfaces:
-          - type: network
-            network: default
-            mac: "52:54:00:{{ '%02x'|format(item|int) }}:00:01"
-            address: "{{ (starting_ip | ipmath('+(item)')) }}/24"
-        debug:
-          msg: "{{ starting_ip }}{{ item }}"     
-      loop: "{{ range(num_vms) | list }}"
+        hostname: vcenter.example.com
+        username: myuser
+        password: mypass
+        validate_certs: no
+        datacenter: mydatacenter
+        name: "{{ item }}"
+        state: poweredon
+        hardware:
+          memory_mb: 2048
+          num_cpus: 2
+          scsi: paravirtual
+        networks:
+          - name: VM Network
+            ip: "{{ ip_base }}{{ starting_index + (item | int) }}"
+            netmask: 255.255.255.0
+            gateway: 10.0.0.1
+      with_sequence: start={{ starting_index }} count={{ num_vms }}
