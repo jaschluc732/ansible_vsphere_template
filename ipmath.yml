@@ -9,7 +9,7 @@
   tasks:
     - name: Print vm name
       debug:
-        msg: "{{ hostname }}{{ item }}"
+        msg: "{{ hostname }}{{ starting_index }}"
     - name: Print IP addresses
       debug:
         msg: "{{ ip_base }}{{ starting_index + (item | int) }}"
