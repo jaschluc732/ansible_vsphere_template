@@ -19,7 +19,7 @@
       folder: VRF-VMs
       name: "{{ hostname }}{{ item }}"
       state: poweredon
-      template: Ubuntu-2204-Template-100GB-Thin
+      template: Templates/Ubuntu-2204-Template-100GB-Thin
       esxi_hostname: pcs-esxi1.eveng.dev
       networks:
       - name: DPortGroup
