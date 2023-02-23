@@ -21,7 +21,6 @@
       state: poweredon
       cluster: prod
       template: Ubuntu-2204-Template-100GB-Thin
-      esxi_hostname: pcs-esxi1.eveng.dev
       networks:
       - name: DPortGroup
         hostname: "{{ hostname }}{{ item }}"
