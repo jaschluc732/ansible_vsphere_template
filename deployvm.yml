@@ -16,7 +16,7 @@
       password: VMware!2345
       validate_certs: False
       datacenter: NSX
-      folder: VRF-VMs
+      folder: Templates
       name: "{{ hostname }}{{ item }}"
       state: poweredon
       cluster: Prod-Compute
