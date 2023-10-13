@@ -5,7 +5,7 @@
   gather_facts: no
   vars:
     ip_base: "192.168.1."
-    starting_index: 115
+    starting_index: 50
     num_vms: 2
     hostname: vm-vrf
   tasks:
@@ -13,22 +13,22 @@
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
-      password: Admin!2345
+      password: VMware!2345
       validate_certs: False
-      datacenter: NSX-T
+      datacenter: NSX
       folder: VRF-VMs
       name: "{{ hostname }}{{ item }}"
       state: poweredon
-      cluster: prod
+      cluster: Prod-Compute
       template: Ubuntu-2204-Template-100GB-Thin
       networks:
-      - name: DPortGroup
+      - name: prod-vds-mgt
         hostname: "{{ hostname }}{{ item }}"
         dns_servers: 
         - 192.168.1.3
         ip: "{{ ip_base }}{{ starting_index + ansible_loop.index0 }}"
         netmask: 255.255.255.0
-        gateway: 192.168.1.1
+        gateway: 192.168.1.2
       wait_for_ip_address: no
     delegate_to: localhost
     register: deploy
