@@ -4,7 +4,7 @@
   connection: local
   gather_facts: no
   vars:
-    ip_base: "192.168.1."
+    ip_base: 192.168.1.
     starting_index: 50
     num_vms: 2
     hostname: vm-vrf
