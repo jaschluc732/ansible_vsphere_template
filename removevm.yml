@@ -36,7 +36,7 @@
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
-      password: Vmware!2345
+      password: VMware!2345
       validate_certs: False
       datacenter: NSX
       folder: Templates
