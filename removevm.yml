@@ -27,7 +27,7 @@
       validate_certs: False
       datacenter: NSX
       folder: Templates
-      name: vm-vrf51
+      name: vm-vrf50
       state: absent
     delegate_to: localhost
     register: facts
