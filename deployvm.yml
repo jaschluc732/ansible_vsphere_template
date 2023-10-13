@@ -3,12 +3,12 @@
   hosts: localhost
   connection: local
   gather_facts: no
-  vars:
-    ip_base: 192.168.1.
-    starting_index: 50
-    num_vms: 2
-    hostname: vm-vrf
   tasks:
+  - name: Read VM data from CSV
+      read_csv:
+        path: /home/ubuntu/ansible/create_vms_from_csv/vms.csv
+        delimiter: ','
+      register: csv_data
   - name: Create VMs
     vmware_guest:
       hostname: vca70.eveng.dev
@@ -21,18 +21,15 @@
       state: poweredon
       cluster: Prod-Compute
       template: Ubuntu-2204-Template-100GB-Thin
-      networks:
-      - name: prod-vds-mgt
-        hostname: "{{ hostname }}{{ item }}"
-        dns_servers: 
-        - 192.168.1.3
-        ip: "{{ ip_base }}{{ starting_index + ansible_loop.index0 }}"
-        netmask: 255.255.255.0
-        gateway: 192.168.1.2
+      name: "{{ item.vm_name }}"
+        networks:
+          - name: prod-vds-mgt
+            ip: "{{ item.ip_address }}"
+            gateway: "{{ item.gateway }}"
+            netmask: "255.255.255.0" # Adjust as needed
+            dns_servers: 
+              - "{{ item.dns_server }}"
+      loop: "{{ csv_data.list }}"
       wait_for_ip_address: no
     delegate_to: localhost
-    register: deploy
-    with_sequence: start={{ starting_index }} count={{ num_vms }}
-    loop_control:
-      extended: true
     
