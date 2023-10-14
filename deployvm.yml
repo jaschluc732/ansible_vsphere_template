@@ -29,6 +29,6 @@
             dns_servers: 
                 - "{{ item.dns_server }}"
       loop: "{{ csv_data.list }}"
-        wait_for_ip_address: no
-        delegate_to: localhost
+        #wait_for_ip_address: no
+        #delegate_to: localhost
       
