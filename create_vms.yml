@@ -10,7 +10,7 @@
   tasks: 
   - name: Create a VM from a template 
     vmware_guest: 
-      hostname: vcenterIP 
+      hostname: vca70.eveng.dev 
       username: "{{username}}" 
       password: "{{password}}" 
       validate_certs: no 
