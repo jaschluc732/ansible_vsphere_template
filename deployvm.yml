@@ -4,10 +4,10 @@
   gather_facts: no
   tasks:
     - name: Read VM data from CSV
-        read_csv:
-          path: /home/ubuntu/ansible/ansible_vsphere_template/vms.csv
-          delimiter: ','
-        register: csv_data
+      read_csv:
+        path: /home/ubuntu/ansible/ansible_vsphere_template/vms.csv
+        delimiter: ','
+      register: csv_data
     - name: Create VMs
       vmware_guest:
         hostname: vca70.eveng.dev
