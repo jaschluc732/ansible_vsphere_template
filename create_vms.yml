@@ -3,7 +3,7 @@
   connection: local 
   gather_facts: false 
   vars_files:
-  - /myproject/ansible/creds.yml 
+  - /home/ubuntu/ansible/ansible_vsphere_template/creds.txt 
 
 
 
