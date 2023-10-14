@@ -22,23 +22,17 @@
       guest_id: ubuntu64Guest 
       template: Ubuntu-2204-Template-100-Thin 
       disk: 
-      - size_gb: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=3') }}" 
+      - size_gb: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=3') }}" 
         type: thin 
-        datastore: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=4') }}"
+        datastore: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=4') }}"
       hardware: 
-        memory_mb: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=2') }}"
-        num_cpus: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=1') }}" 
+        memory_mb: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=2') }}"
+        num_cpus: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=1') }}" 
       networks: 
-      - name: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=5') }}" 
-        ip: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=6') }}"
-        netmask: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=7') }}"
-        gateway: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=8') }}"
-      - name: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=9') }}" 
-        ip: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=10') }}"
-        netmask: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=11') }}"
-      - name: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=13') }}"
-        ip: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=14') }}"
-        netmask: "{{ lookup('csvfile', '{{item}} file=testVM.csv delimiter=; col=15') }}"
+      - name: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=5') }}" 
+        ip: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=6') }}"
+        netmask: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=7') }}"
+        gateway: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=8') }}"
       customization: 
         domain: eveng.dev 
         dns_servers: 
