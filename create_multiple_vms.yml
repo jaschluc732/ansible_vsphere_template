@@ -37,9 +37,6 @@
         name: "{{ item.Vmname }}"
         state: present
         template: "Ubuntu-2204-Template-100GB-Thin" # Name of your Ubuntu template VM
-        disk:
-            type: thin
-            datastore: "{{ item.dataStoreName }}"
         networks:
           - name: "{{ item.PortGroupName }}"
             ip: "{{ item.ip }}"
