@@ -45,6 +45,6 @@
             type: "static"
         customization:
           hostname: "{{ item.Vmname }}"
-        state: poweredon
+        state: poweredoff
       loop: "{{ csv_data.list }}"
       delegate_to: localhost
