@@ -26,8 +26,8 @@
         type: thin 
         datastore: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=4') }}"
       hardware: 
-        memory_mb: "8192"
-        num_cpus: "1" 
+        memory_mb: 8192
+        num_cpus: 1 
       networks: 
       - name: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=5') }}" 
         ip: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=6') }}"
