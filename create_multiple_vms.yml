@@ -28,7 +28,6 @@
         fieldnames:
           - Vmname
           - cpuCount
-          - MemorySize
           - diskSize
           - dataStoreName
           - PortGroupName
@@ -45,7 +44,7 @@
         validate_certs: no
         datacenter: "{{ datacenter }}"
         cluster: "{{ cluster_name }}"
-        folder: "/{{ datacenter }}/{{ folder_name }}"
+        folder: "{{ folder_name }}"
         name: "{{ item.Vmname }}"
         state: present
         template: "Ubuntu-2204-Template-100-Thin" # Name of your Ubuntu template VM
@@ -53,9 +52,6 @@
           - size_gb: "{{ (item.diskSize|int / 1024)|int }}"
             type: thin
             datastore: "{{ item.dataStoreName }}"
-        hardware:
-            memory_mb: "{{ item.MemorySize }}"
-            num_cpus: "{{ item.cpuCount }}"
         networks:
           - name: "{{ item.PortGroupName }}"
             ip: "{{ item.ip }}"
