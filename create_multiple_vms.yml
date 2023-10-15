@@ -21,12 +21,6 @@
         - name: "folder_name"
           private: no
           prompt: "Enter VM folder name"
-        - name: "dataStoreName"
-          private: no
-          prompt: "Enter datastore name"
-        - name: "PortGroupName"
-          private: no
-          prompt: "Enter PortGroupName"
   tasks:
     - name: Read VM data from CSV
       read_csv:
