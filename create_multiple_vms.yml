@@ -48,7 +48,7 @@
         state: present
         template: "Ubuntu-2204-Template-100-Thin" # Name of your Ubuntu template VM
         disk:
-          - size_gb: "{{ (item.diskSize|int / 1024)|int }}"
+          - size_gb: "{{ (item.diskSize|int) }}"
             type: thin
             datastore: "{{ item.dataStoreName }}"
         networks:
