@@ -18,7 +18,6 @@
         path: ./vms.csv
         fieldnames:
           - Vmname
-          - diskSize
           - dataStoreName
           - PortGroupName
           - ip
@@ -39,7 +38,6 @@
         state: present
         template: "Ubuntu-2204-Template-100GB-Thin" # Name of your Ubuntu template VM
         disk:
-          - size_gb: "{{ (item.diskSize|int) }}"
             type: thin
             datastore: "{{ item.dataStoreName }}"
         networks:
