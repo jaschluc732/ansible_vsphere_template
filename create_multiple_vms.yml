@@ -2,6 +2,23 @@
 - name: Deploy VMs from Ubuntu template using data from CSV
   hosts: localhost
   gather_facts: no
+  vars_prompt:
+        - name: "vcenter_hostname"
+          prompt: "Enter vCenter hostname"
+        - name: "vcenter_username"
+          prompt: "Enter vCenter username"
+        - name: "vcenter_password"
+          prompt: "Enter vCenter password"
+        - name: "datacenter"
+          prompt: "Enter datacenter name"
+        - name: "cluster_name"
+          prompt: "Enter cluster name"
+        - name: "folder_name"
+          prompt: "Enter VM folder name"
+        - name: "datastore"
+          prompt: "Enter datastore name"
+        - name: "network_name"
+          prompt: "Enter network name"
   tasks:
     - name: Read VM data from CSV
       read_csv:
@@ -40,21 +57,3 @@
           hostname: "{{ item.name }}"
       loop: "{{ csv_data.list }}"
       delegate_to: localhost
-      vars_prompt:
-        - name: "vcenter_hostname"
-          prompt: "Enter vCenter hostname"
-        - name: "vcenter_username"
-          prompt: "Enter vCenter username"
-        - name: "vcenter_password"
-          prompt: "Enter vCenter password"
-          private: yes
-        - name: "datacenter"
-          prompt: "Enter datacenter name"
-        - name: "cluster_name"
-          prompt: "Enter cluster name"
-        - name: "folder_name"
-          prompt: "Enter VM folder name"
-        - name: "datastore"
-          prompt: "Enter datastore name"
-        - name: "network_name"
-          prompt: "Enter network name"
