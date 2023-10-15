@@ -15,20 +15,24 @@
           prompt: "Enter cluster name"
         - name: "folder_name"
           prompt: "Enter VM folder name"
-        - name: "datastore"
+        - name: "dataStoreName"
           prompt: "Enter datastore name"
-        - name: "network_name"
-          prompt: "Enter network name"
+        - name: "PortGroupName"
+          prompt: "Enter PortGroupName"
   tasks:
     - name: Read VM data from CSV
       read_csv:
         path: ./vms.csv
         fieldnames:
-          - name
+          - Vmname
+          - cpuCount
+          - MemorySize
+          - diskSize
+          - dataStoreName
+          - PortGroupName
           - ip
           - subnet_mask
           - default_gateway
-          - disk_size
       register: csv_data
 
     - name: Deploy VMs from Ubuntu template
@@ -39,21 +43,24 @@
         validate_certs: no
         datacenter: "{{ datacenter }}"
         cluster: "{{ cluster_name }}"
-        folder: "/{{ datacenter }}/vm/{{ folder_name }}"
-        name: "{{ item.name }}"
+        folder: "/{{ datacenter }}/{{ folder_name }}"
+        name: "{{ item.Vmname }}"
         state: present
-        template: "Ubuntu_Template_VM" # Name of your Ubuntu template VM
+        template: "Ubuntu-2204-Template-100-Thin" # Name of your Ubuntu template VM
         disk:
-          - size_gb: "{{ (item.disk_size|int / 1024)|int }}"
+          - size_gb: "{{ (item.diskSize|int / 1024)|int }}"
             type: thin
             datastore: "{{ datastore }}"
+        hardware:
+            memory_mb: "{{ item.MemorySize }}"
+            num_cpus: "{{ item.cpuCount }}"
         networks:
-          - name: "{{ network_name }}"
+          - name: "{{ item.PortGroupName }}"
             ip: "{{ item.ip }}"
             netmask: "{{ item.subnet_mask }}"
             gateway: "{{ item.default_gateway }}"
             type: "static"
         customization:
-          hostname: "{{ item.name }}"
+          hostname: "{{ item.Vmname }}"
       loop: "{{ csv_data.list }}"
       delegate_to: localhost
