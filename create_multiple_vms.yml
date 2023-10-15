@@ -4,20 +4,28 @@
   gather_facts: no
   vars_prompt:
         - name: "vcenter_hostname"
+          private: no
           prompt: "Enter vCenter hostname"
         - name: "vcenter_username"
+          private: no
           prompt: "Enter vCenter username"
         - name: "vcenter_password"
+          private: no
           prompt: "Enter vCenter password"
         - name: "datacenter"
+          private: no
           prompt: "Enter datacenter name"
         - name: "cluster_name"
+          private: no
           prompt: "Enter cluster name"
         - name: "folder_name"
+          private: no
           prompt: "Enter VM folder name"
         - name: "dataStoreName"
+          private: no
           prompt: "Enter datastore name"
         - name: "PortGroupName"
+          private: no
           prompt: "Enter PortGroupName"
   tasks:
     - name: Read VM data from CSV
