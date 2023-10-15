@@ -46,7 +46,7 @@
         folder: "{{ folder_name }}"
         name: "{{ item.Vmname }}"
         state: present
-        template: "Ubuntu-2204-Template-100-Thin" # Name of your Ubuntu template VM
+        template: "Ubuntu-2204-Template-100GB-Thin" # Name of your Ubuntu template VM
         disk:
           - size_gb: "{{ (item.diskSize|int) }}"
             type: thin
