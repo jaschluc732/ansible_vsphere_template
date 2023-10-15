@@ -3,15 +3,6 @@
   hosts: localhost
   gather_facts: no
   vars_prompt:
-        - name: "vcenter_hostname"
-          private: no
-          prompt: "Enter vCenter hostname"
-        - name: "vcenter_username"
-          private: no
-          prompt: "Enter vCenter username"
-        - name: "vcenter_password"
-          private: no
-          prompt: "Enter vCenter password"
         - name: "datacenter"
           private: no
           prompt: "Enter datacenter name"
@@ -37,9 +28,9 @@
 
     - name: Deploy VMs from Ubuntu template
       vmware_guest:
-        hostname: "{{ vcenter_hostname }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
+        hostname: "vca70.eveng.dev"
+        username: "administrator@vsphere.local"
+        password: "VMware!2345"
         validate_certs: no
         datacenter: "{{ datacenter }}"
         cluster: "{{ cluster_name }}"
