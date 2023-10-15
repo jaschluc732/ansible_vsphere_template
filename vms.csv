@@ -1,6 +1,6 @@
-Vmname,diskSize,dataStoreName,PortGroupName,ip,subnet_mask,default_gateway
-testvm1,16,ESXI1,prod-vds-mgt,192.168.1.50,255.255.255.0,192.168.1.2
-testvm2,16,ESXI1,prod-vds-mgt,192.168.1.51,255.255.255.0,192.168.1.2
-testvm3,16,ESXI1,prod-vds-mgt,192.168.1.52,255.255.255.0,192.168.1.2
-testvm4,16,ESXI1,prod-vds-mgt,192.168.1.53,255.255.255.0,192.168.1.2
-testvm5,16,ESXI1,prod-vds-mgt,192.168.1.54,255.255.255.0,192.168.1.2
+Vmname,dataStoreName,PortGroupName,ip,subnet_mask,default_gateway
+testvm1,ESXI1,prod-vds-mgt,192.168.1.50,255.255.255.0,192.168.1.2
+testvm2,ESXI1,prod-vds-mgt,192.168.1.51,255.255.255.0,192.168.1.2
+testvm3,ESXI1,prod-vds-mgt,192.168.1.52,255.255.255.0,192.168.1.2
+testvm4,ESXI1,prod-vds-mgt,192.168.1.53,255.255.255.0,192.168.1.2
+testvm5,ESXI1,prod-vds-mgt,192.168.1.54,255.255.255.0,192.168.1.2
