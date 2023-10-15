@@ -27,8 +27,6 @@
         path: ./vms.csv
         fieldnames:
           - Vmname
-          - cpuCount
-          - diskSize
           - dataStoreName
           - PortGroupName
           - ip
