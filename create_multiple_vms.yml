@@ -1,5 +1,5 @@
 ---
-- name: Deploy VMs from Ubuntu template using data from CSV
+- name: Deploy multiple VMs from Ubuntu template using data from CSV
   hosts: localhost
   gather_facts: no
   vars_prompt:
