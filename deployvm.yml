@@ -18,7 +18,7 @@
         folder: Templates
         name: "{{ hostname }}{{ item }}"
         state: poweredon
-        cluster: Prod-Compute
+        cluster: Prod-Cluster
         template: Ubuntu-2204-Template-100GB-Thin
         name: "{{ item.vm_name }}"
         networks:
