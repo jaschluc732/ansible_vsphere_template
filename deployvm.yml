@@ -5,7 +5,7 @@
   tasks:
     - name: Read VM data from CSV
       read_csv:
-        path: /home/ubuntu/ansible/ansible_vsphere_template/vms.csv
+        path: /root/ansible_vsphere_template/vms.csv
         delimiter: ','
       register: csv_data
     - name: Create VMs
