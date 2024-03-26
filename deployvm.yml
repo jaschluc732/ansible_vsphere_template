@@ -19,7 +19,7 @@
         name: "{{ hostname }}{{ item }}"
         state: poweredon
         cluster: Prod-Cluster
-        template: Ubuntu-2204-Template-100GB-Thin
+        template: ubuntu2204-template-100gb-thin
         name: "{{ item.vm_name }}"
         networks:
           - name: t1-vrfa-segment
