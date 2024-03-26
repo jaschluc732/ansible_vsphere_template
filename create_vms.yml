@@ -3,7 +3,7 @@
   connection: local 
   gather_facts: false 
   vars_files:
-  - /home/ubuntu/ansible/ansible_vsphere_template/creds.txt 
+  - /root/ansible_vsphere_template/creds.txt 
 
 
 
@@ -14,13 +14,13 @@
       username: "{{username}}" 
       password: "{{password}}" 
       validate_certs: no 
-      datacenter: NSX 
+      datacenter: NSXT 
       folder: VRF_VMs 
-      cluster: Prod-Compute 
+      cluster: Prod-Cluster 
       name: "{{item}}" 
       state: poweredon 
       guest_id: ubuntu64Guest 
-      template: Ubuntu-2204-Template-100-Thin 
+      template: ubuntu2204-template-100gb-thin 
       disk: 
       - size_gb: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=3') }}" 
         type: thin 
@@ -34,9 +34,7 @@
         netmask: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=7') }}"
         gateway: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=8') }}"
       customization: 
-        domain: eveng.dev 
-        dns_servers: 
-        - 192.168.1.3
+        domain: eveng.dev
 
     with_items:
     - testvm1
