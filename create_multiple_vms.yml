@@ -29,14 +29,14 @@
       vmware_guest:
         hostname: "vca70.eveng.dev"
         username: "administrator@vsphere.local"
-        password: "VMware!2345"
+        password: "VMwareVca!2345"
         validate_certs: no
         datacenter: "{{ datacenter }}"
         cluster: "{{ cluster_name }}"
         folder: "{{ folder_name }}"
         name: "{{ item.Vmname }}"
         state: present
-        template: "Ubuntu-2204-Template-100GB-Thin" # Name of your Ubuntu template VM
+        template: "ubuntu2204-template-100gb-thin" # Name of your Ubuntu template VM
         networks:
           - name: "{{ item.PortGroupName }}"
             ip: "{{ item.ip }}"
