@@ -1,6 +1,6 @@
 Vmname,dataStoreName,PortGroupName,ip,subnet_mask,default_gateway
-testvm6,ESXI1,prod-vds-mgt,192.168.1.55,255.255.255.0,192.168.1.2
-testvm7,ESXI1,prod-vds-mgt,192.168.1.56,255.255.255.0,192.168.1.2
-testvm8,ESXI1,prod-vds-mgt,192.168.1.57,255.255.255.0,192.168.1.2
-testvm9,ESXI1,prod-vds-mgt,192.168.1.58,255.255.255.0,192.168.1.2
-testvm10,ESXI1,prod-vds-mgt,192.168.1.59,255.255.255.0,192.168.1.2
+testvm6,ESXI1,t1-vrfa-segment,192.168.10.10,255.255.255.0,192.168.10.1
+testvm7,ESXI1,t1-vrfa-segment,192.168.10.11,255.255.255.0,192.168.10.1
+testvm8,ESXI1,t1-vrfa-segment,192.168.10.12,255.255.255.0,192.168.10.1
+testvm9,ESXI1,t1-vrfa-segment,192.168.10.13,255.255.255.0,192.168.10.1
+testvm10,ESXI1,t1-vrfa-segment,192.168.10.14,255.255.255.0,192.168.10.1
