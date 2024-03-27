@@ -14,7 +14,7 @@
       validate_certs: False
       datacenter: NSX
       folder: Templates
-      name: vm-vrf50
+      name: test19_01
       state: poweredoff
     delegate_to: localhost
     register: facts
@@ -27,7 +27,7 @@
       validate_certs: False
       datacenter: NSX
       folder: Templates
-      name: vm-vrf50
+      name: test19_02
       state: absent
     delegate_to: localhost
     register: facts
@@ -40,7 +40,7 @@
       validate_certs: False
       datacenter: NSX
       folder: Templates
-      name: vm-vrf51
+      name: testvm10
       state: poweredoff
     delegate_to: localhost
     register: facts
@@ -53,7 +53,48 @@
       validate_certs: False
       datacenter: NSX
       folder: Templates
-      name: vm-vrf51
+      name: testvm9
       state: absent
     delegate_to: localhost
     register: facts
+
+
+
+ - name: Remove VM for vm-vrf51
+    vmware_guest:
+      hostname: vca70.eveng.dev
+      username: administrator@vsphere.local
+      password: VMware!2345
+      validate_certs: False
+      datacenter: NSX
+      folder: Templates
+      name: testvm8
+      state: absent
+    delegate_to: localhost
+    register: facts
+    
+ - name: Remove VM for vm-vrf51
+    vmware_guest:
+      hostname: vca70.eveng.dev
+      username: administrator@vsphere.local
+      password: VMware!2345
+      validate_certs: False
+      datacenter: NSX
+      folder: Templates
+      name: testvm7
+      state: absent
+    delegate_to: localhost
+    register: facts  
+
+ - name: Remove VM for vm-vrf51
+    vmware_guest:
+      hostname: vca70.eveng.dev
+      username: administrator@vsphere.local
+      password: VMware!2345
+      validate_certs: False
+      datacenter: NSX
+      folder: Templates
+      name: testvm6
+      state: absent
+    delegate_to: localhost
+    register: facts  
