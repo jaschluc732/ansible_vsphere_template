@@ -2,12 +2,9 @@
 - name: Create a VM from template and customize
   hosts: localhost
   gather_facts: no
+  var_files:
+    variables.yml
   tasks:
-    - name: Read VM data from CSV
-      read_csv:
-        path: /root/ansible_vsphere_template/vms.csv
-        delimiter: ','
-      register: csv_data
     - name: Create VMs
       vmware_guest:
         hostname: vca70.eveng.dev
@@ -19,10 +16,10 @@
         state: poweredon
         cluster: Prod-Cluster
         template: ubuntu2204-template-100gb-thin
-        name: "{{ item.vm_name }}"
+        name: "{{ item }}"
         networks:
           - name: t1-vrfa-segment
-      loop: "{{ csv_data.list }}"
+      loop: "{{ servers }}"
         
         #delegate_to: localhost
       
