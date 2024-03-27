@@ -1,6 +1,6 @@
-Vmname,dataStoreName,PortGroupName,ip,subnet_mask,default_gateway
-testvm6,ESXI1,t1-vrfa-segment,192.168.10.10,255.255.255.0,192.168.10.1
-testvm7,ESXI1,t1-vrfa-segment,192.168.10.11,255.255.255.0,192.168.10.1
-testvm8,ESXI1,t1-vrfa-segment,192.168.10.12,255.255.255.0,192.168.10.1
-testvm9,ESXI1,t1-vrfa-segment,192.168.10.13,255.255.255.0,192.168.10.1
-testvm10,ESXI1,t1-vrfa-segment,192.168.10.14,255.255.255.0,192.168.10.1
+Vmname,dataStoreName,size_gb,PortGroupName,ip,subnet_mask,default_gateway
+testvm6,ESXI1,100,t1-vrfa-segment,192.168.10.10,255.255.255.0,192.168.10.1
+testvm7,ESXI1,100,t1-vrfa-segment,192.168.10.11,255.255.255.0,192.168.10.1
+testvm8,ESXI1,100,t1-vrfa-segment,192.168.10.12,255.255.255.0,192.168.10.1
+testvm9,ESXI1,100,t1-vrfa-segment,192.168.10.13,255.255.255.0,192.168.10.1
+testvm10,ESXI1,100,t1-vrfa-segment,192.168.10.14,255.255.255.0,192.168.10.1
