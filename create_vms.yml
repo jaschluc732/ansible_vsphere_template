@@ -20,8 +20,8 @@
       networks: 
       - name: "{{ lookup('csvfile', '{{item}} file=./vms.csv delimiter=; col=3') }}" 
         ip: "{{ lookup('csvfile', '{{item}} file=./vms.csv delimiter=; col=4') }}"
-        netmask: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=5') }}"
-        gateway: "{{ lookup('csvfile', '{{item}} file=vms.csv delimiter=; col=6') }}"
+        netmask: "{{ lookup('csvfile', '{{item}} file=./vms.csv delimiter=; col=5') }}"
+        gateway: "{{ lookup('csvfile', '{{item}} file=./vms.csv delimiter=; col=6') }}"
 
     with_items:
     - testvm6
