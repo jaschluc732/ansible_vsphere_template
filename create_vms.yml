@@ -37,8 +37,8 @@
         domain: eveng.dev
 
     with_items:
-    - testvm1
-    - testvm2
-    - testvm3
-    - testvm4
-    - testvm5
+    - testvm6
+    - testvm7
+    - testvm8
+    - testvm9
+    - testvm10
