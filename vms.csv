@@ -1,6 +1,3 @@
-Vmname
-testvm6
-testvm7
-testvm8
-testvm9
-testvm10
+servers:
+  - test_01
+  - test_02
