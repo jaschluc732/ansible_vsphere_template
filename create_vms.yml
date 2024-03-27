@@ -11,8 +11,8 @@
   - name: Create a VM from a template 
     vmware_guest: 
       hostname: vca70.eveng.dev 
-      username: "{{username}}" 
-      password: "{{password}}" 
+      username: "administrator@vsphere.local" 
+      password: "{VMwareVca!2345}" 
       validate_certs: no 
       datacenter: NSXT 
       folder: VRF_VMs 
