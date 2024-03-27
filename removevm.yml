@@ -15,7 +15,7 @@
       datacenter: NSX
       folder: Templates
       name: test19_01
-      state: poweredoff
+      state: absent
     delegate_to: localhost
     register: facts
 
@@ -41,7 +41,7 @@
       datacenter: NSX
       folder: Templates
       name: testvm10
-      state: poweredoff
+      state: absent
     delegate_to: localhost
     register: facts
 
