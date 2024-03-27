@@ -60,7 +60,7 @@
 
 
 
- - name: Remove VM for vm-vrf51
+  - name: Remove VM for vm-vrf51
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
@@ -73,7 +73,7 @@
     delegate_to: localhost
     register: facts
     
- - name: Remove VM for vm-vrf51
+  - name: Remove VM for vm-vrf51
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
@@ -86,7 +86,7 @@
     delegate_to: localhost
     register: facts  
 
- - name: Remove VM for vm-vrf51
+  - name: Remove VM for vm-vrf51
     vmware_guest:
       hostname: vca70.eveng.dev
       username: administrator@vsphere.local
