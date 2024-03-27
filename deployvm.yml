@@ -16,18 +16,12 @@
         validate_certs: false
         datacenter: NSXT
         folder: Templates
-        name: "{{ hostname }}{{ item }}"
         state: poweredon
         cluster: Prod-Cluster
         template: ubuntu2204-template-100gb-thin
         name: "{{ item.vm_name }}"
         networks:
           - name: t1-vrfa-segment
-            type: static
-            ip: "{{ item.ip_address }}"
-            gateway: "{{ item.gateway }}"
-            netmask: "255.255.255.0" # Adjust as needed
-        wait_for_ip_address: false
       loop: "{{ csv_data.list }}"
         
         #delegate_to: localhost
