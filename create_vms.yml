@@ -18,14 +18,10 @@
       guest_id: ubuntu64Guest 
       template: ubuntu2204-template-100gb-thin 
       networks: 
-      - name: "{{ lookup('csvfile', '{{item}} file=./vms.csv delimiter=; col=3') }}" 
-        ip: "{{ lookup('csvfile', '{{item}} file=./vms.csv delimiter=; col=4') }}"
-        netmask: "{{ lookup('csvfile', '{{item}} file=./vms.csv delimiter=; col=5') }}"
-        gateway: "{{ lookup('csvfile', '{{item}} file=./vms.csv delimiter=; col=6') }}"
+      - name: "t1-vrfa-segment" 
+        ip: "192.168.10.10"
+        netmask: "255.255.255.0"
+        gateway: "192.168.10.1"
 
     with_items:
     - testvm6
-    - testvm7
-    - testvm8
-    - testvm9
-    - testvm10
